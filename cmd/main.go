@@ -1,7 +1,7 @@
 package main
 
 import (
-	"grpc-server/server"
+	"github.com/zipkero/grpc-server/server"
 	"path/filepath"
 )
 

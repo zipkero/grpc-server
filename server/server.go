@@ -1,8 +1,8 @@
 package server
 
 import (
-	"grpc-server/config"
-	"grpc-server/router"
+	"github.com/zipkero/grpc-server/config"
+	"github.com/zipkero/grpc-server/router"
 	"net/http"
 )
 

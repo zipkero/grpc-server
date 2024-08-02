@@ -1,4 +1,4 @@
-module grpc-server
+module github.com/zipkero/grpc-server
 
 go 1.22
 
