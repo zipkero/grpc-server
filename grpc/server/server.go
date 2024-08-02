@@ -5,6 +5,7 @@ import (
 	"github.com/zipkero/grpc-server/config"
 	"github.com/zipkero/grpc-server/grpc/proto/user"
 	"google.golang.org/grpc"
+	"log"
 	"net"
 )
 
@@ -21,8 +22,10 @@ func (s *GRPCServer) Start() error {
 	if listener, err := net.Listen("tcp", s.config.Grpc.Port); err != nil {
 		return err
 	} else {
-		s := grpc.NewServer([]grpc.ServerOption{}...)
-		if err := s.Serve(listener); err != nil {
+		rpcServer := grpc.NewServer([]grpc.ServerOption{}...)
+
+		user.RegisterUserServiceServer(rpcServer, s)
+		if err := rpcServer.Serve(listener); err != nil {
 			return err
 		}
 
@@ -31,9 +34,11 @@ func (s *GRPCServer) Start() error {
 }
 
 func (s *GRPCServer) GetUser(ctx context.Context, req *user.GetUserRequest) (*user.GetUserResponse, error) {
-	return nil, nil
+	log.Println("grpc call GetUser")
+	return &user.GetUserResponse{}, nil
 }
 
 func (s *GRPCServer) CreateUser(ctx context.Context, req *user.CreateUserRequest) (*user.CreateUserResponse, error) {
-	return nil, nil
+	log.Println("grpc call CreateUser")
+	return &user.CreateUserResponse{}, nil
 }

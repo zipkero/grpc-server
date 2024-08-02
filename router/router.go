@@ -1,6 +1,8 @@
 package router
 
-import "net/http"
+import (
+	"net/http"
+)
 
 type Router struct {
 	routes map[string]map[string]http.HandlerFunc
