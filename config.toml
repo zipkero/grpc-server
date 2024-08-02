@@ -1,5 +1,5 @@
 [Server]
-Port=":5000"
+Port="localhost:5000"
 
 [Grpc]
 Port=":5001"

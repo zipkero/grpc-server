@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	s := server.NewServer(filepath.Join("", "config.toml"))
+	s := server.NewServer(filepath.Join("..", "config.toml"))
 	if err := s.Start(); err != nil {
 		panic(err)
 	}
