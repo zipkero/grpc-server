@@ -19,10 +19,14 @@ func NewServer(configPath string) *Server {
 }
 
 func (s *Server) Start() error {
-	s.router.AddRoute("GET", "/", func(w http.ResponseWriter, req *http.Request) {
+	s.router.AddRoute("GET", "/users", func(w http.ResponseWriter, req *http.Request) {
 		if _, err := w.Write([]byte("grpc server")); err != nil {
 			http.Error(w, "Internal Server Error", http.StatusInternalServerError)
 		}
+	})
+
+	s.router.AddRoute("POST", "/users", func(w http.ResponseWriter, req *http.Request) {
+
 	})
 
 	return http.ListenAndServe(s.config.Server.Port, s.router)
